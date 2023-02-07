@@ -5,9 +5,9 @@ public class Loops {
     for (x = 1; x <= n; x++) {
       if (x % 100 == 1) {
         System.out.println(x + "st hello");
-      } else if (x % 10  == 2 || x % 100 == 2) {
+      } else if ((x % 10  == 2 || x % 100 == 2) && x % 100 != 12) {
         System.out.println(x + "nd hello");
-      } else if (x % 10  == 3 || x % 100 == 3) {
+      } else if ((x % 10  == 3 || x % 100 == 3) && x % 100 != 13) {
         System.out.println(x + "rd hello");
       } else {
         System.out.println(x + "th hello");
@@ -17,6 +17,6 @@ public class Loops {
   }
 
   public static void main(String[] args) {
-    nHellos(222);
+    nHellos(999);
   }
 }
