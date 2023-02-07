@@ -1,3 +1,4 @@
+import java.util.Arrays;
 public class Loops {
 
   public static void nHellos(int n) {
@@ -39,14 +40,39 @@ public class Loops {
   }
 
   public static void getFactors(int n) {
-    
+    int factor = 1;
+    int numberOfFactors = 0;
+    for (factor = 1; factor <= n; factor++) {
+      if (n % factor == 0) {
+        numberOfFactors ++;
+      }
+    }
+    int[] factors = new int[numberOfFactors];
+    int index = 0;
+    for (factor = 1; factor <= n; factor++) {
+      if (n % factor == 0) {
+        factors[index] = factor;
+        index ++;
+      }
+    }
+    System.out.println(Arrays.toString(factors));
+  }
+
+  private static int rollD6() {
+    int result = (int) (Math.random() * 6) + 1;
+    return result;
+  }
+  
+  private static int rollD12() {
+    int result = (int) (Math.random() * 12) + 1;
+    return result;
   }
 
   public static void pepysSimulation() {
-
+    
   }
 
   public static void main(String[] args) {
-
+    getFactors(24);
   }
 }
