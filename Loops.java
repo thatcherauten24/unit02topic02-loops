@@ -13,10 +13,40 @@ public class Loops {
         System.out.println(x + "th hello");
       }
     }
+  }
+
+  public static void nRandoms(int n) {
+    int x = 1;
+    double sum = 0;
+    for (x = 1; x <= n; x++) {
+      double data = Math.random();
+      sum += data;
+    }
+    double average = sum / n;
+    System.out.println("The average of " + n + " random numbers between 0 and 1 is " + average);
+
+  }
+
+  public static boolean isPrime(int n) {
+    int x = 2;
+    boolean result = true;
+    for (x = 2; x < (n/2); x++) {
+      if (n % x == 0) {
+        result = false;
+      }
+    }
+    return result;
+  }
+
+  public static void getFactors(int n) {
+    
+  }
+
+  public static void pepysSimulation() {
 
   }
 
   public static void main(String[] args) {
-    nHellos(999);
+
   }
 }
