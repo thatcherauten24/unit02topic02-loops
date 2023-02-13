@@ -42,14 +42,14 @@ public class Loops {
   public static void getFactors(int n) {
     int factor = 1;
     int numberOfFactors = 0;
-    for (factor = 1; factor <= n; factor++) {
+    for (factor = 1; factor < n; factor++) {
       if (n % factor == 0) {
         numberOfFactors ++;
       }
     }
     int[] factors = new int[numberOfFactors];
     int index = 0;
-    for (factor = 1; factor <= n; factor++) {
+    for (factor = 1; factor < n; factor++) {
       if (n % factor == 0) {
         factors[index] = factor;
         index ++;
@@ -58,21 +58,45 @@ public class Loops {
     System.out.println(Arrays.toString(factors));
   }
 
-  private static int rollD6() {
+  private static int rollDie() {
     int result = (int) (Math.random() * 6) + 1;
     return result;
   }
   
-  private static int rollD12() {
-    int result = (int) (Math.random() * 12) + 1;
-    return result;
-  }
-
   public static void pepysSimulation() {
-    
-  }
+    int ones6 = 0;
+    int ones12 = 0;
+    int simNum = 1000000;
 
+    for (int num = 0; num <= simNum; num ++){
+      for (int n = 0; n < 6; n++) {
+        rollDie();
+        if(rollDie() == 1) {
+          ones6 ++;
+        }
+      }
+      for (int n = 0; n < 12; n++) {
+        rollDie();
+        if(rollDie() == 1) {
+          ones12 ++;
+        }
+      }
+    }
+    double ones6Prob =  (double) ones6 / (double) simNum;
+    double ones12Prob = ((double) ones12) / (2) / (double) simNum;
+
+    System.out.println("Probability for ones6 " + ones6Prob);
+    System.out.println("Probabliity for ones12 " + ones12Prob);
+
+    if (ones6 > ones12) {
+      System.out.println("It is more likely to roll 1 at least once when rolling a fair dice 6 times than to roll a one at least twice when rolling a fair dice 12 times");
+    } else if (ones6 < ones12) {
+      System.out.println("It is more likely to roll 1 at least twice when rolling a fair dice 12 times than to roll a one at least once when rolling a fair dice 6 times");
+    } else {
+      System.out.println("The probability is the same");
+    }
+  }
   public static void main(String[] args) {
-    getFactors(24);
+    pepysSimulation();
   }
 }
